@@ -21,7 +21,7 @@ app.get('/', function(req, res) {
 
 app.post('/', multer({ dest: './uploads/'}).single('upl'), function(req, res) {
   console.log(req.file);
-  res.send(req.file['size']);
+  res.send({size:req.file['size']});
 });
 
 // listen for requests :)
