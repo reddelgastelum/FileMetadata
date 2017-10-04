@@ -19,6 +19,11 @@ app.get('/', function(req, res) {
   res.render('index');
 });
 
+app.post('/', multer({ dest: './uploads/'}).single('upl'), function(req, res) {
+  console.log(req.file);
+  res.send(req.file['size']);
+});
+
 // listen for requests :)
 var listener = app.listen(process.env.PORT, function () {
   console.log('Your app is listening on port ' + listener.address().port);
