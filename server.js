@@ -7,11 +7,17 @@ var app = express();
 // http://expressjs.com/en/starter/static-files.html
 app.use(express.static('public'));
 
+// Body Parser
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
 
+// Views
 app.set('views', './views');
-app.set('view')
+app.set('view engine', 'pug');
+
+app.get('/', function(req, res) {
+  res.render('index');
+});
 
 // listen for requests :)
 var listener = app.listen(process.env.PORT, function () {
